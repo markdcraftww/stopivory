@@ -1,0 +1,1741 @@
+/*  
+Theme Name: Stop Ivory
+Theme URI: http://www.stopivory.org
+Description: Full page scrollable theme for the Stop Ivory site
+Version: 1.0
+Author: Mark Duwe
+Author URI: http://craftww.com
+Tags: full page, scrolling, jQuery
+License: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License
+License URI: http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US
+*/
+
+*, *:before, *:after {
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+::selection {
+	background: #111;
+	color: #efefef;
+}
+::-moz-selection {
+	background: #111;
+	color: #efefef;
+}
+body {
+	font-family: "Open Sans", sans-serif;
+	font-size: 14px;
+	line-height: 1.2;
+	color: #efefef;
+	text-shadow: 1px 1px 1px rgba(0,0,0,1);
+	filter: progid:DXImageTransform.Microsoft.Shadow(direction=135,strength=2,color=111111);
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Open Sans", sans-serif;
+	line-height: 1.4;
+	font-weight: bolder;
+	font-weight: 800;
+}
+h4, h5, h6 {
+	font-weight: 100;
+}
+h1, h2, h3, h4, h5, h6, p, td {
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTJBQkFGRUZFOTIyMTFFMEJDRDNEQzkxOTVGOTNBODAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTJBQkFGRjBFOTIyMTFFMEJDRDNEQzkxOTVGOTNBODAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MkFCQUZFREU5MjIxMUUwQkNEM0RDOTE5NUY5M0E4MCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MkFCQUZFRUU5MjIxMUUwQkNEM0RDOTE5NUY5M0E4MCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtrV+I8AAAAQSURBVHjaYvj//z8DQIABAAj8Av7bok0WAAAAAElFTkSuQmCC',sizingMethod=crop);
+	zoom: 1;
+}
+a, a:active, a.focus {
+	color: #efefef;
+}
+a img {
+	border: 0;
+}
+#cookie {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	font-size: 11px;
+	text-align: center;
+	z-index: 1100;
+	display: none;
+}
+#mainMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.4);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000)"; /* IE8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);   /* IE6 & 7 */
+    zoom: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    list-style: none;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+#mainMenu ul {
+	margin: 0;
+	padding: 0;
+}
+#mainMenu li {
+    display: block;
+    float: left;
+    margin: 30px 7px;
+    padding: 10px 0;
+}
+#mainMenu li a {
+    display: block;
+    padding: 3px 5px;
+    border: 2px solid #fefefe;
+    color: #fefefe;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: #5e5c5c;
+    font-size: 10px;
+}
+#mainMenu li.logo {
+    background: transparent;
+    margin: 0 5px 0 0;
+}
+#mainMenu li.logo a {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    width: 132px;
+    height: 85px;
+    background: url(img/logo.png) !important;
+    text-indent: -999em;
+}
+#mainMenu li.current-menu-item a, #mainMenu li a:hover {
+    background: #862229;
+}
+#mainMenu li.f {
+    margin: 0 10px 0 0;
+    padding: 0;
+    float: right;
+}
+#mainMenu li.f a {
+    border: 0;
+    padding: 0;
+    line-height: 1;
+}
+#mainMenu li.t {
+    margin: 0 10px 0 0;
+    padding: 0;
+    float: right;
+}
+#mainMenu li.t a {
+    border: 0;
+    padding: 0;
+    line-height: 1;
+}
+.menuToggle {
+    position: fixed;
+    top: 0;
+    left: 5px;
+    background: #862229;
+    z-index: 990;
+    width: 40px;
+    height: 40px;
+    display: none;
+}
+.menuToggle a {
+    padding: 8px 0;
+    display: block;
+}
+.menuToggle a div {
+    background: #fefefe;
+    height: 2px;
+    margin: 4px;
+}
+.device-header {
+    background: #8f8f8e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 304px;
+    width: 100%;
+    z-index: 9999 !important;
+    display: none;
+}
+#menu-mobile-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.device-header a {
+    text-decoration: none;
+    padding: 3px;
+    border: 2px solid #fefefe;
+    margin: 3px;
+    font-size: 12px;
+    line-height: 30px;
+    color: #fefefe;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.device-header a:hover, .device-header li.current-menu-item a {
+    background: #862229;
+    color: #fff;
+}
+.menu-social-menu-container {
+	position: fixed;
+	top: 0;
+	right: 10px;
+}
+.menu-social-menu-container li {
+	margin: 0 0 0 10px !important;
+}
+.facebook, .facebook a {
+	width: 60px;
+	height: 60px;
+	border: 0 !important;
+	text-indent: -999em;
+	background: url(img/f.png) !important;
+	padding: 0 !important;
+}
+.twitter, .twitter a {
+	width: 60px;
+	height: 60px;
+	border: 0 !important;
+	text-indent: -999em;
+	background: url(img/t.png) !important;
+	padding: 0 !important;
+}
+.homeLogo {
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    background-size: cover !important;
+	-ms-behavior: url(css/backgroundsize.min.htc);
+}
+#twitter {
+	width: 250px;
+	height: 355px;
+	position: fixed;
+	top: 50%;
+	right: 5%;
+	margin: -176px 0 0 0;
+	background: #111;
+	background: rgba(0,0,0,0.6);
+	z-index: 1100;
+	color: #efefef;
+	padding: 5px 10px 10px;
+	overflow: hidden;
+}
+#twitter h3 {
+	margin: 0 0 5px 0;
+}
+.follow {
+	font-size: 11px;
+	text-align: right;
+	display: block;
+	padding: 5px 0 0 0;
+}
+.tweet-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.tweet-list li {
+	padding: 5px;
+	border-bottom: 1px solid #efefef;
+	font-size: 10px;
+	overflow: hidden;
+	height: 79px;
+	line-height: 1;
+	position: relative;
+}
+.tweet-list li .avatar {
+	float: left;
+	width: 55px;
+	height: 55px;
+}
+.tweet-list li .dateTime {
+	float: right;
+	font-size: 8px;
+	position: absolute;
+	right: 5px;
+	bottom: 2px;
+}
+.tweet-list li p {
+	float: left;
+	width: 165px;
+	margin: 0;
+	height: 100%;
+}
+.tweet-list li p small {
+	display: block;
+	text-align: right;
+	padding: 2px 0;
+	position: absolute;
+	right: 5px;
+	bottom: 2px;
+}
+.homePage {
+    position: absolute;
+    text-align: center;
+    font-size: 20px;
+    color: #111;
+    font-weight: 100;
+    width: 100%;
+    padding: 0 20px;
+    height: 70px;
+    margin: 0;
+    left: 0;
+    bottom: 30px;
+    z-index: 10;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0);
+}
+.button {
+	background: #8f8f8e;
+    text-decoration: none;
+    padding: 3px;
+    border: 2px solid #fefefe;
+    margin: 3px;
+    font-size: 12px;
+    line-height: 30px;
+    color: #fefefe;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-indent: 0;
+}
+.button:hover, .button:active {
+    background: #862229;
+    color: #fff;	
+}
+.dark {
+	color: #111 !important;
+	text-shadow: none;
+	text-align: center;
+	font-size: 16px;
+}
+.dark h3 {
+	margin: 0 0 16px 0;
+	line-height: 1.1;
+}
+.section {
+	text-indent: -999em;
+	background-size: cover !important;
+	-ms-behavior: url(css/backgroundsize.min.htc);
+}
+.section h2, .section h3, .section h4, .section .teamHolder, .content, .wwd, .faq, .partner, .contactDetails, #twitter, .homePage {
+	text-indent: 0;
+}
+.section h2 {
+    font-size: 60px;
+    margin: 20px auto;
+    text-transform: uppercase;
+}
+.section h4 {
+    font-size: 20px;
+    margin: 20px auto;
+}
+[data-anchor="the-stop-ivory-proposal"] .container, [data-anchor="the-stop-ivory-proposal"] .title, .error404 {
+	color: #111;
+	border-color: #111;
+	text-shadow: none;
+}
+.section h2, .section h4 {
+	text-align: center;
+	width: 80%;
+	margin: 20px auto;
+}
+.section h4 {
+	text-align: center;
+	width: 80%;
+	margin: 30px auto;
+}
+[data-anchor="advisory-panel"] h2, [data-anchor="advisory-panel-2"] h2, [data-anchor="ngos"] h2, [data-anchor="technical-expertise"] h2 {
+	color: #111;
+	text-shadow: none;
+}
+[data-anchor="advisory-panel"] .whoweareTitle {
+	display: none;
+}
+[data-anchor="who-we-are"] .tableCell, [data-anchor="executive-team"] .tableCell, [data-anchor="board-of-trustees"] .tableCell, [data-anchor="advisory-panel"] .tableCell, [data-anchor="advisory-panel-2"] .tableCell {
+	padding: 0;
+}
+h4 a {
+	color: #efefef;
+	text-decoration: none;
+}
+hr {
+	width: 350px;
+	border: 1px solid #efefef;
+	margin: 0 auto;
+}
+.error404 hr {
+	width: 350px;
+	border: 1px solid #111;
+	margin: 0 auto;
+}
+.content {
+    width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.title {
+    width: 480px;
+    float: left;
+}
+.title h3 {
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 480px;
+    float: left;
+    border-left: 2px solid #efefef;
+    padding: 0 0 0 20px;
+}
+.container p {
+    margin: 0 0 16px 0;
+}
+.grid {
+	text-indent: -999em;
+}
+.teamHolder, .boardHolder, .panelHolder {
+	margin: 0 auto;
+	overflow: hidden;
+}
+.small .teamHolder, .small .boardHolder, .small .panelHolder {
+	width: 280px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.team, .board, .panel {
+	text-indent: 0;
+	float: left;
+	margin: 10px;
+	background: #111;
+	background: rgba(0,0,0,0.6);
+	height: auto;
+}
+[data-anchor="executive-team"] .team, [data-anchor="executive-team"] .board, [data-anchor="executive-team"] .panel {
+	float: left;
+	margin: 10px;
+	background: #a21b25;
+	background: rgba(162,27,37,0.6);
+	height: auto;
+}
+.small .team, .small .board, .small .panel {
+	width: 280px;
+	float: left;
+	margin: 10px;
+	background: #a21b25;
+	background: rgba(162,27,37,0.6);
+	height: auto;
+}
+.board {
+	background: #111;
+	background: rgba(0,0,0,0.6);
+}
+.vcard {
+	min-height: 120px;
+}
+.panel, .contactDetails {
+	background: #111;
+	background: rgba(0,0,0,0.4);
+}
+.teamImage img, .boardImage img {
+	width: 100%;
+	height: auto;
+	height: auto;
+}
+.teamContent, .boardContent, .panelContent, .contactDetails {
+	padding: 10px;
+}
+.teamContent h4 {
+	text-transform: uppercase;
+}
+.teamContent h4, .boardContent h4, .panelContent h4, .contactDetails h4, .fn {
+	font-weight: 800;
+	font-size: 24px;
+	margin: 0 0 10px 0;
+	text-align: left;
+	line-height: 1.1;
+}
+.fn, .org {
+	display: block;
+	line-height: 1.1;
+}
+.teamContent h5, .boardContent h5, .panelContent h5, .contactDetails h5, .org {
+	font-weight: 100;
+	line-height: 1.1;
+	font-size: 18px;
+	font-style: italic;
+	margin: 0 0 10px 0;
+}
+#hcard-Stop-Ivory .org {
+	font-weight: 800;
+	font-size: 24px;
+	margin: 0 0 10px 0;
+	text-align: left;	
+	font-style: normal;
+}
+.postal-code {
+	display: block;
+}
+.teamContent p, .boardContent p, .panelContent p, .contactDetails p {
+	font-size: 14px;
+	margin: 0;
+}
+.faq, [data-anchor="the-elephant-protection-fund"] .faq, [data-anchor="technical-expertise"] .faq, [data-anchor="what-were-doing"] .faq {
+	background: #111;
+	background: rgba(0,0,0,0.4);
+	margin: 0 auto;
+	padding: 10px;
+}
+[data-anchor="how-it-works"] .faq {
+	background: #a21b25;
+	background: rgba(162,27,37,0.6);
+	margin: 0 auto;
+	padding: 10px;
+}
+.faq h5, .faq h6 {
+	margin: 0 0 12px 0;
+}
+.faq h5 {
+	font-size: 30px;
+	font-weight: 800;
+	text-align: center;
+}
+.faq h6 {
+	font-size: 22px;
+	font-weight: 400;
+}
+.faq h4 {
+	text-align: left;
+	width: 100%;
+	margin: 0 0 12px 0;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+ol {
+	list-style-type: lower-roman;
+}
+.partner, .wwd, .news {
+	padding: 10px;
+	background: #111;
+	background: rgba(0,0,0,0.4);
+	margin-bottom: 20px;
+	text-indent: 0;
+}
+.partner {
+	padding: 10px;
+}
+.partner h4 {
+	width: 90%;
+	margin: 10px auto;
+	text-align: center;
+}
+.wwd.download {
+	background: #a21b25;
+	background: rgba(162,27,37,0.6);
+}
+.format-link {
+	background: #a21b25;
+	background: rgba(162,27,37,0.6);
+}
+.faq {
+	width: 100%;
+}
+.wwd h4, .news h4 {
+	text-align: left;
+	font-weight: 800;
+	width: 100%;
+	margin: 0 0 12px 0;
+	text-transform: uppercase;
+}
+.news h4 {
+	margin-bottom: 0;
+}
+.small .partner img {
+	width: 260px;
+	height: 74px;
+	max-width: 260px;
+	display: block;
+	margin: 0 auto;
+	height: auto;
+}
+.partner img {
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	height: auto;
+}
+.partner h4 {
+	font-weight: 400;
+	line-height: 1.15;
+	margin-bottom: 0;
+	font-size: 12px;
+}
+#fullPage-nav.right {
+	right: -2px;
+}
+.fullPage-slidesNav.bottom {
+    bottom: 5px;
+}
+#fullPage-nav li .active span, .fullPage-slidesNav .active span {
+    background: #862229;
+}
+#fullPage-nav span, .fullPage-slidesNav span {
+	border-color: #efefef;
+	background: transparent;
+	border-radius: 0;
+	height: 10px;
+	width: 10px;
+}
+.tableCell {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+}
+.controlArrow {
+    border: none !important;
+    cursor: pointer;
+    height: 50px;
+    margin-top: -25px;
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    padding: 0;
+    opacity: 0.5;
+}
+.controlArrow.prev{
+	background: url(img/left.png) no-repeat center center;
+    width: 20px;
+    height: 50px;
+}
+.controlArrow.next{
+	background: url(img/right.png) no-repeat center center;
+    width: 20px;
+    height: 50px;
+}
+#copyright {
+	position: fixed;
+	bottom: 2px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: #efefef;
+	font-size: 10px;
+}
+
+/* tablet portrait */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px)
+and (orientation : portrait) {
+	#twitter {
+		display: none;
+	}
+	.homePage {
+		font-size: 20px;
+	}
+	.hidden-tablet {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+	.content {
+	    width: 440px;
+	    margin: 0 auto;
+	    overflow: hidden;
+	}
+	.title {
+	    width: 440px;
+	    float: left;
+	}
+	.title h3 {
+	    font-size: 20px;
+	    margin: 0;
+	    padding: 0;
+	}
+	.container {
+	    width: 440px;
+	    float: left;
+	    border-left: 0;
+	    padding: 0;
+	}
+	.container p {
+	    margin: 0 0 8px 0;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="the-elephant-protection-fund"] .faq, [data-anchor="technical-expertise"] .faq, [data-anchor="what-were-doing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="how-it-works"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+/* tablet landscape */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px)
+and (orientation : landscape) {
+	#twitter {
+		display: none;
+	}
+	.homePage {
+		font-size: 20px;
+	}
+	.hidden-tablet {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+}
+
+/* Samsubg S3/4 (portrait) ----------- */
+@media only screen 
+and (max-width : 360px) {
+	#twitter {
+		display: none;
+	}
+	.tableCell {
+		padding: 20px;
+		font-size: 12px;
+		width: 300px;
+	}
+	.section h2 {
+		font-size: 30px !important;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2 {
+		margin: 0 auto;
+	}
+	[data-anchor="whyweexist"] h4 {
+		font-size: 16px !important;
+	}
+	.homePage {
+		font-size: 16px;
+		height: 80px;
+	}
+	.hidden-phone {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	hr {
+		width: 150px;
+	}
+	.content {
+	    width: 280px;
+	    margin: 0 auto;
+	    overflow: hidden;
+	}
+	.title {
+	    width: 280px;
+	    float: left;
+	}
+	.title h3 {
+	    font-size: 20px;
+	    margin: 0;
+	    padding: 0;
+	}
+	.container {
+	    width: 280px;
+	    float: left;
+	    border-left: 0;
+	    padding: 0;
+	}
+	.container p {
+	    margin: 0 0 8px 0;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+/* Samsubg S3/4 (landscape) ----------- */
+@media only screen 
+and (max-width : 640px) {
+	#twitter {
+		display: none;
+	}
+	.tableCell {
+		padding: 20px;
+		font-size: 12px;
+		width: 300px;
+	}
+	.section h2 {
+		font-size: 30px !important;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2 {
+		margin: 0 auto;
+	}
+	[data-anchor="whyweexist"] h4 {
+		font-size: 16px !important;
+	}
+	.homePage {
+		font-size: 16px;
+		height: 80px;
+	}
+	.hidden-phone {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	hr {
+		width: 150px;
+	}
+	.content {
+	    width: 280px;
+	    margin: 0 auto;
+	    overflow: hidden;
+	}
+	.title {
+	    width: 280px;
+	    float: left;
+	}
+	.title h3 {
+	    font-size: 20px;
+	    margin: 0;
+	    padding: 0;
+	}
+	.container {
+	    width: 280px;
+	    float: left;
+	    border-left: 0;
+	    padding: 0;
+	}
+	.container p {
+	    margin: 0 0 8px 0;
+	}
+	.teamImage img, .boardImage img {
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+
+/* phone portrait */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : portrait) {
+	#twitter {
+		display: none;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+	.section h2 {
+		font-size: 30px !important;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2 {
+		margin: 0 auto;
+	}
+	.homePage {
+		font-size: 20px;
+	}
+	.hidden-phone {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.content {
+	    width: 300px;
+	    margin: 0 auto;
+	    overflow: hidden;
+	}
+	.title {
+	    width: 300px;
+	    float: left;
+	}
+	.title h3 {
+	    font-size: 20px;
+	    margin: 0;
+	    padding: 0;
+	}
+	.container {
+	    width: 300px;
+	    float: left;
+	    border-left: 2px solid #efefef;
+	    padding: 0 0 0 20px;
+	}
+	.container p {
+	    margin: 0 0 8px 0;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	.faq ol {
+		font-size: 11px !important;
+		margin: 0 0 10px 0;
+	}
+	.faq h5 {
+		font-size: 16px !important;
+	}
+	.faq h6 {
+		font-size: 14px !important;
+	}
+	.faq p {
+		margin: 0 0 10px 0;
+		font-size: 11.5px;
+	}
+}
+
+/* phone landscape */
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 568px) 
+and (orientation : landscape) {
+	#twitter {
+		display: none;
+	}
+	body {
+		font-size: 12px;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+	.section h2 {
+		font-size: 30px !important;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2 {
+		margin: 0 auto;
+	}
+	[data-anchor="whyweexist"] h4 {
+		font-size: 16px !important;
+	}
+
+	.teamContent p, .boardContent p, .panelContent p {
+		font-size: 12px;
+	}
+	.teamContent h4, .boardContent h4, .panelContent h4 {
+		font-size: 20px;
+	}
+	.teamContent h5, .boardContent h5, .panelContent h5 {
+		font-size: 18px;
+	}
+	.homePage {
+		font-size: 16px;
+		height: 60px;
+		bottom: 10px;
+	}
+	.hidden-phone {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.content {
+	    width: 440px;
+	    margin: 0 auto;
+	    overflow: hidden;
+	}
+	.title {
+	    width: 440px;
+	    float: left;
+	}
+	.title h3 {
+	    font-size: 20px;
+	    margin: 0;
+	    padding: 0;
+	}
+	.container {
+	    width: 440px;
+	    float: left;
+	    border-left: 0;
+	    padding: 0;
+	}
+	.container p {
+	    margin: 0 0 8px 0;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+	#twitter {
+		display: none;
+	}
+	p {
+		font-size: 11px;
+		line-height: 1.1;
+	}
+	.tableCell {
+		padding: 20px;
+		font-size: 12px;
+		width: 300px;
+	}
+	.section h2 {
+		font-size: 30px !important;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2 {
+		margin: 0 auto;
+	}
+	[data-anchor="whyweexist"] h4 {
+		font-size: 16px !important;
+	}
+	[data-anchor="faq"] h4 {
+		font-size: 14px !important;
+	}
+	.faq ol {
+		font-size: 11px !important;
+		margin: 0 0 10px 0;
+	}
+	.faq h5 {
+		font-size: 16px !important;
+	}
+	.faq h6 {
+		font-size: 14px !important;
+	}
+	.faq p {
+		margin: 0 0 10px 0;
+		font-size: 11.5px;
+	}
+
+	.homePage {
+		font-size: 16px;
+		height: 80px;
+	}
+	.hidden-phone {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	hr {
+		width: 150px;
+	}
+	.content {
+	    width: 280px;
+	    margin: 0 auto;
+	    overflow: hidden;
+	}
+	.title {
+	    width: 280px;
+	    float: left;
+	}
+	.title h3 {
+	    font-size: 20px;
+	    margin: 0;
+	    padding: 0;
+	}
+	.container {
+	    width: 280px;
+	    float: left;
+	    border-left: 0;
+	    padding: 0;
+	}
+	.container p {
+	    margin: 0 0 8px 0;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) 
+and (orientation : landscape) {
+	#twitter {
+		display: none;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2 {
+		margin: 0 auto;
+	}
+	.homePage {
+		font-size: 20px;
+	}
+	.hidden-tablet {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+	.content {
+		width: 960px;
+	}
+	.title {
+		width: 380px;
+		float: left;
+	}
+	.container {
+		width: 580px;
+		float: left;
+		border-left: 2px solid #efefef;
+		padding: 0 0 0 20px;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+/* tablet (portrait) ----------- */
+@media only screen 
+and (min-width : 500px) 
+and (max-width : 800px) 
+and (orientation : portrait) {
+	#twitter {
+		display: none;
+	}
+	.section h2 {
+		font-size: 30px !important;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2 {
+		margin: 0 auto;
+	}
+	[data-anchor="whyweexist"] h4 {
+		font-size: 16px !important;
+	}
+	.homePage {
+		font-size: 20px;
+	}
+	.hidden-tablet {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+	.content {
+	    width: 440px;
+	    margin: 0 auto;
+	    overflow: hidden;
+	}
+	.title {
+	    width: 440px;
+	    float: left;
+	}
+	.title h3 {
+	    font-size: 20px;
+	    margin: 0;
+	    padding: 0;
+	}
+	.container {
+	    width: 440px;
+	    float: left;
+	    border-left: 0;
+	    padding: 0;
+	}
+	.container p {
+	    margin: 0 0 8px 0;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+/* tablet (portrait) ----------- */
+@media only screen 
+and (min-width : 600px) 
+and (max-width : 767px) 
+and (orientation : portrait) {
+	#twitter {
+		display: none;
+	}
+	.section h2 {
+		font-size: 30px !important;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2, [data-anchor="faq"] h2, [data-anchor="whoweworkwith"] h2 {
+		margin: 0 auto;
+	}
+	[data-anchor="whyweexist"] h4 {
+		font-size: 16px !important;
+	}
+	.homePage {
+		font-size: 20px;
+	}
+	.hidden-tablet {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+	.content {
+	    width: 440px;
+	    margin: 0 auto;
+	    overflow: hidden;
+	}
+	.title {
+	    width: 440px;
+	    float: left;
+	}
+	.title h3 {
+	    font-size: 20px;
+	    margin: 0;
+	    padding: 0;
+	}
+	.container {
+	    width: 440px;
+	    float: left;
+	    border-left: 0;
+	    padding: 0;
+	}
+	.container p {
+	    margin: 0 0 8px 0;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+/* tablet (landscape) ----------- */
+@media only screen 
+and (min-width : 800px) 
+and (max-width : 1023px) 
+and (orientation : landscape) {
+	#twitter {
+		display: none;
+	}
+	.homePage {
+		font-size: 20px;
+	}
+	.section h2 {
+		font-size: 30px !important;
+	}
+	[data-anchor="executiveteam"] h2, [data-anchor="boardoftrustees"] h2, [data-anchor="advisorypanel"] h2, [data-anchor="advisorypanel2"] h2 {
+		margin: 0 auto;
+	}
+	.hidden-tablet {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+	.content {
+		width: 760px;
+	}
+	.title {
+		width: 280px;
+		float: left;
+	}
+	.container {
+		width: 480px;
+		float: left;
+		border-left: 2px solid #efefef;
+		padding: 0 0 0 20px;
+	}
+	[data-anchor="faq"] .faq, [data-anchor="theelephantprotectionfund"] .faq, [data-anchor="technicalexpertise"] .faq, [data-anchor="whatweredoing"] .faq  {
+		background: #111;
+		background: rgba(0,0,0,0.4);
+		margin: 0 auto;
+		padding: 10px;
+	}
+	[data-anchor="howitworks"] .faq {
+		background: #a21b25;
+		background: rgba(162,27,37,0.6);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) 
+and (orientation : portrait) {
+	#twitter {
+		display: none;
+	}
+	.homePage {
+		font-size: 20px;
+	}
+	.hidden-tablet {
+		display: none !important;
+	}
+	.device-header {
+		display: block;
+	}
+	.menuToggle {
+		display: block !important;
+	}
+	.tableCell {
+		padding: 20px;
+	}
+}
+
+@media only screen 
+and (min-width : 1025px) {
+	#mainMenu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: rgba(0,0,0,0.4);
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000)"; /* IE8 */
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);   /* IE6 & 7 */
+		zoom: 1;
+		width: 100%;
+		margin: 0;
+		padding: 0 20px;
+		list-style: none;
+		box-shadow: 3px 0 10px rgba(0,0,0,0.5);
+		z-index: 1000;
+	}
+	#mainMenu li.logo {
+		background: transparent;
+		margin: 0 5px 0 0;
+	}
+	#mainMenu li.logo a {
+		display: block;
+		padding: 0;
+		border: 0;
+		background: transparent;
+	}
+	#mainMenu li.active a {
+		background: #862229;
+	}
+	#mainMenu li.f {
+		margin: 0 10px 0 0;
+		padding: 0;
+		float: right;
+	}
+	#mainMenu li.f a {
+		border: 0;
+		padding: 0;
+		line-height: 1;
+	}
+	#mainMenu li.t {
+		margin: 0 10px 0 0;
+		padding: 0;
+		float: right;
+	}
+	#mainMenu li.t a {
+		border: 0;
+		padding: 0;
+		line-height: 1;
+	}
+	.device-header {
+		background: #8f8f8e;
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 322px;
+		width: 100%;
+		z-index: 9999 !important;
+		display: none;
+	}
+	.device-header a {
+		text-decoration: none;
+		padding: 3px;
+		border: 2px solid #fefefe;
+		margin: 3px;
+		font-size: 12px;
+		line-height: 40px;
+		color: #fefefe;
+		display: block;
+	}
+	.device-header a:hover {
+		text-decoration: none;
+		padding: 3px;
+		border: 2px solid #fefefe;
+		background: #777;
+		margin: 3px;
+		font-size: 12px;
+		line-height: 40px;
+		color: #fefefe;
+		display: block;
+	}
+	.device-header a.active {
+		text-decoration: none;
+		padding: 3px;
+		border: 2px solid #fefefe;
+		margin: 3px;
+		font-size: 12px;
+		line-height: 40px;
+		background: #862229;
+		color: #fff;
+	}
+	.menuToggle {
+		position: fixed;
+		top: 0;
+		left: 5px;
+		background: #8f8f8e;
+		z-index: 990;
+		width: 40px;
+		height: 40px;
+		display: none;
+	}
+	.menuToggle a {
+		padding: 8px 0;
+		display: block;
+	}
+	.menuToggle a div {
+		background: #fefefe;
+		height: 2px;
+		margin: 4px;
+	}
+	[data-anchor="whyweexist"] h2 {
+		font-size: 60px;
+		margin: 20px auto;
+	}
+	[data-anchor="whyweexist"] h4 {
+		font-size: 20px;
+		margin: 20px auto;
+	}
+	.homePage {
+		position: absolute;
+		text-align: center;
+		font-size: 20px;
+		color: #111;
+		padding: 0;
+		font-weight: 100;
+		width: 960px;
+		height: 70px;
+		margin: 0 0 0 -480px;
+		left: 50%;
+		bottom: 16px;
+		z-index: 10;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0);
+	}
+	#fullPage-nav li, .fullPage-slidesNav li {
+	    height: 13px;
+	    margin: 7px 3px;
+	    position: relative;
+	    width: 12px;
+	}
+	.content {
+		width: 960px;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+	.title {
+		width: 480px;
+		float: left;
+	}
+	.title h3 {
+		font-size: 50px;
+		margin: 0;
+		padding: 0;
+	}
+	.container {
+		width: 480px;
+		float: left;
+		border-left: 2px solid #efefef;
+		padding: 0 0 0 20px;
+	}
+	.container p {
+		margin: 0 0 16px 0;
+	}
+}
+[class*='col-'] {
+	float: left;
+	padding-right: 20px;
+}
+[class*='col-']:last-of-type {
+	padding-right: 20px;
+}
+.grid {
+	width: 100%;
+	max-width: 1140px;
+	min-width: 280px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.grid:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.grid-pad {
+	padding: 20px 0 0px 20px;
+}
+.grid-big .col-1-3 {
+	width: 50%;
+	margin: 0 auto;
+	float: none;
+	padding: 0 !important;
+}
+.grid-big .col-1-1 {
+	width: 100%;
+	margin: 0 auto;
+	float: none;
+	padding: 0 !important;
+}
+.grid-pad > [class*='col-']:last-of-type {
+	padding-right: 20px;
+}
+.push-right {
+	float: right;
+}
+.col-1-1 {
+	width: 100%;
+}
+.col-2-3, .col-8-12 {
+	width: 66.66%;
+}
+.col-1-2, .col-6-12 {
+	width: 50%;
+}
+.col-1-3, .col-4-12 {
+	width: 33.33%;
+}
+.col-1-4, .col-3-12 {
+	width: 25%;
+}
+.col-1-5 {
+	width: 20%;
+}
+.col-1-6, .col-2-12 {
+	width: 16.667%;
+}
+.col-1-7 {
+	width: 14.28%;
+}
+.col-1-8 {
+	width: 12.5%;
+}
+.col-1-9 {
+	width: 11.1%;
+}
+.col-1-10 {
+	width: 10%;
+}
+.col-1-11 {
+	width: 9.09%;
+}
+.col-1-12 {
+	width: 8.33%
+}
+.col-11-12 {
+	width: 91.66%
+}
+.col-10-12 {
+	width: 83.333%;
+}
+.col-9-12 {
+	width: 75%;
+}
+.col-5-12 {
+	width: 41.66%;
+}
+.col-7-12 {
+	width: 58.33%
+}
+
+@media handheld, only screen and (max-width: 767px) {
+	.grid {
+		width: 100%;
+		min-width: 0;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	[class*='col-'] {
+		width: auto;
+		float: none;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+@media (max-width: 600px) {
+	#copyright {
+		display: none;
+	}
+	[class*='col-']:last-of-type {
+		padding-right: 20px;
+	}
+}
+@media (max-width: 480px) {
+	[data-anchor="contactus"] h2 {
+		margin: 10px 0 !important;
+		text-align: center !important;
+	}
+	.fn {
+		font-size: 20px !important;
+		margin: 0 0 5px 0 !important;
+	}
+	.org {
+		font-size: 16px !important;
+		margin: 0 0 5px 0 !important;
+	}
+}
+@media (max-width: 801px) {
+	.small {
+		display :block;
+	}
+	.large {
+		display: none;
+	}
+	.timeline .tableCell {
+		padding: 5px 20px;
+	}
+	.faq {
+		margin: 0 auto;
+	}
+	.wwd {
+		padding: 5px;
+		margin-bottom: 5px;
+	}
+	.wwd h4 {
+		font-size: 15px !important;
+		line-height: 1.1 !important;
+		margin: 0 0 7px 0 !important;
+	}
+	.wwd p {
+		font-size: 11px !important;
+		line-height: 1.1 !important;
+		margin: 0 0 7px 0 !important;
+	}
+}
+@media (min-width: 802px) {
+	.small {
+		display :none;
+	}
+	.large {
+		display: block;
+	}
+	.faq {
+		width: 60%;
+	}
+}
